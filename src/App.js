@@ -1,6 +1,20 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Landing from './components/views/landing/landing';
+import LogIn from './components/views/login/logIn';
+import SignUp from './components/views/signup/signUp';
 import './App.css';
 
-const App = (props) => <h1>Welcome</h1>;
+const App = (props) => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;
