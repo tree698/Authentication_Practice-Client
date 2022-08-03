@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { login, logout } from '../../../redux/auth/authSlice';
+import { login, logout } from '../../redux/auth/authSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const LogIn = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,12 +20,17 @@ const LogIn = (props) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    // Todo: Chan
-    // const body = {
-    //   username,
-    //   password,
-    // };
-    // dispatch(login(body));
+    const body = {
+      username,
+      password,
+    };
+
+    const response = dispatch(login(body));
+    if (response) {
+      navigate('/');
+    } else {
+      alert('Invalid username or password');
+    }
   };
 
   return (

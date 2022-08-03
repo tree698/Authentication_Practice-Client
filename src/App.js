@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Landing from './components/views/landing/landing';
-import LogIn from './components/views/login/logIn';
-import SignUp from './components/views/signup/signUp';
+import Landing from './components/landing/landing';
+import LogIn from './components/login/logIn';
+import SignUp from './components/signup/signUp';
 import './App.css';
 
 const App = (props) => {
