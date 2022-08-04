@@ -5,19 +5,19 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {},
   reducers: {
-    login: (state, action) => {
-      return { ...state, loginSuccess: action.payload };
+    login: {
+      reducer: (state) => {
+        return { ...state };
+      },
+      prepare: (dataToSubmit) => {
+        const request = axios
+          .post('http://localhost:8080/auth/login', dataToSubmit)
+          .then((response) => response.data);
+        return { payload: request };
+      },
     },
-    logout: (state) => {},
   },
 });
-
-authSlice.login = (dataToSubmit) => {
-  const request = axios
-    .post('http://localhost:8080/auth/login', dataToSubmit)
-    .then((response) => response.data);
-  return { payload: request };
-};
 
 export const { login, logout } = authSlice.actions;
 export default authSlice.reducer;

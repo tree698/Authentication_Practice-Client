@@ -25,12 +25,18 @@ const LogIn = (props) => {
       password,
     };
 
-    const response = dispatch(login(body));
-    if (response) {
-      navigate('/');
-    } else {
-      alert('Invalid username or password');
-    }
+    dispatch(login(body))
+      .then((response) => {
+        if (response.payload.loginSuccess) {
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        alert('Invalid username or password!');
+      });
+
+    setUsername('');
+    setPassword('');
   };
 
   return (
