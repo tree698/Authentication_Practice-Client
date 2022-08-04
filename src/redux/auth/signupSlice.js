@@ -1,17 +1,17 @@
 import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
 
-export const authSlice = createSlice({
-  name: 'auth',
+export const signupSlice = createSlice({
+  name: 'signup',
   initialState: {},
   reducers: {
-    login: {
+    signup: {
       reducer: (state) => {
         return { ...state };
       },
       prepare: (dataToSubmit) => {
         const request = axios
-          .post('http://localhost:8080/auth/login', dataToSubmit)
+          .post('http://localhost:8080/auth/signup', dataToSubmit)
           .then((response) => response.data);
         return { payload: request };
       },
@@ -19,5 +19,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, logout } = authSlice.actions;
-export default authSlice.reducer;
+export const { signup } = signupSlice.actions;
+export default signupSlice.reducer;
